@@ -1,0 +1,16 @@
+CONTIKI_TARGET_DIRS = . dev apps net
+
+CONTIKI_CORE=contiki-main
+CONTIKI_TARGET_MAIN = ${CONTIKI_CORE}.o
+CONTIKI_TARGET_SOURCEFILES += contiki-main.c params.c
+
+CONTIKILOWRISC=$(CONTIKI)/cpu/lowrisc
+CONTIKIBOARD=.
+
+CONTIKI_PLAT_DEFS = -DAUTO_CRC_PADDING=2
+
+MCU=lowrisc
+
+include $(CONTIKILOWRISC)/Makefile.lowrisc
+MODULES += core/net/mac core/net core/net/mac/sicslowmac \
+    core/net/mac/contikimac
